@@ -199,13 +199,7 @@ If pretrained checkpoints are available inside the **checkpoints/** directory, t
 
 # Checkpoints
 
-Place all pretrained checkpoint files inside:
-
-```text
-checkpoints/
-```
-
-Expected filenames:
+Filenames:
 
 - ckpt_dinov2_full.pth
 - ckpt_dinov2_linear.pth
@@ -216,6 +210,18 @@ Expected filenames:
 - ckpt_vit_full.pth
 - ckpt_vit_linear.pth
 - ckpt_vit_lora.pth
+
+---
+
+## Pretrained Checkpoints
+
+Due to GitHub file size limitations, pretrained checkpoints are hosted externally.
+
+Download:
+
+Google Drive:(https://drive.google.com/drive/u/0/folders/17g9pLrwz_A7ZCgStMZGiEhUe_7jCaUsy)
+
+After downloading just run the entire code.
 
 ---
 
