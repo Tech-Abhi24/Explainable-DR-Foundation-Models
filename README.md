@@ -221,7 +221,7 @@ ROC curves show the ability of each model to distinguish between diseased and no
 Higher AUROC indicates better classification performance.
 
 
-![ROC Curves](results/plots_complete/roc_all9models.png)
+![ROC Curves](figures/plots_complete/roc_all_9models.png)
 
 
 
@@ -235,7 +235,7 @@ Calibration curves evaluate whether predicted probabilities represent the true c
 A well-calibrated model should provide reliable confidence estimates.
 
 
-![Calibration Curves](results/plots_complete/reliability_diagram.png)
+![Calibration Curves](figures/plots_complete/reliability_diagram.png)
 
 
 
@@ -252,7 +252,7 @@ These methods generate heatmaps showing which retinal regions influenced the pre
 The generated explanations were compared with expert lesion segmentation masks from IDRiD.
 
 
-![Grad-CAM and HiResCAM Lesion Segmentation](results/plots_complete/xai_final_grid_lesiononly.png)
+![Grad-CAM and HiResCAM Lesion Segmentation](figures/plots_complete/xai_final_grid_lesiononly.png)
 
 
 
