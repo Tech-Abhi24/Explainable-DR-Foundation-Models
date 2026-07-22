@@ -382,22 +382,25 @@ The pretrained checkpoints can be downloaded from the following link:
 
 ---
 
+
 ## Checkpoint Setup
 
 After downloading the checkpoints, create the following folder structure in Google Drive:
 
+```text
 MyDrive/
 └── Retinal_project/
-└── checkpoints/
-├── ckpt_dinov2_full.pth
-├── ckpt_dinov2_linear.pth
-├── ckpt_dinov2_lora.pth
-├── ckpt_clip_full.pth
-├── ckpt_clip_linear.pth
-├── ckpt_clip_lora.pth
-├── ckpt_vit_full.pth
-├── ckpt_vit_linear.pth
-└── ckpt_vit_lora.pth
+    └── checkpoints/
+        ├── ckpt_dinov2_full.pth
+        ├── ckpt_dinov2_linear.pth
+        ├── ckpt_dinov2_lora.pth
+        ├── ckpt_clip_full.pth
+        ├── ckpt_clip_linear.pth
+        ├── ckpt_clip_lora.pth
+        ├── ckpt_vit_full.pth
+        ├── ckpt_vit_linear.pth
+        └── ckpt_vit_lora.pth
+```
 
 
 The notebook automatically checks whether checkpoint files are available.
