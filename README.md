@@ -89,6 +89,29 @@ A segmentation subset containing 54 images was used for quantitative XAI evaluat
 
 ---
 
+# Dataset Setup
+
+
+Due to dataset size limitations, the datasets are not included directly in this repository.
+
+The datasets can be downloaded from Kaggle.
+
+After downloading, place the dataset files in the following Google Drive structure:
+
+```text
+MyDrive/
+└── Retinal_project/
+    ├── ODIR.zip
+    ├── aptos.zip
+    ├── Idrid.zip
+    └── checkpoints/
+```
+
+The notebook automatically extracts the datasets before training and evaluation.
+
+
+---
+
 # Methodology
 
 
