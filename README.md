@@ -1,231 +1,202 @@
-# Explainable Diabetic Retinopathy Classification using Vision Foundation Models
+Explainable Diabetic Retinopathy Classification using Foundation Models
 
-This repository contains the implementation of our MSc research project on **Explainable Diabetic Retinopathy Classification** using **Vision Foundation Models**.
+Explainable AI Evaluation of Retinal Foundation Models for Disease Classification
 
-The project evaluates **DINOv2**, **CLIP**, and **Vision Transformer (ViT)** using three different fine-tuning strategies (**Full Fine-tuning, Linear Probing, and LoRA**) and validates explainability using **Grad-CAM** and **HiResCAM**.
+Overview
 
----
+Diabetic retinopathy (DR) is one of the leading causes of preventable blindness worldwide. Deep learning models have shown strong performance in retinal disease classification; however, their lack of interpretability remains a major limitation for clinical adoption.
 
-# Authors
+In this project, we investigate the capability of foundation vision models for retinal disease classification and evaluate their explainability using lesion-level annotations.
 
-- **Abhishek Verma**
-- **Anila Krishna**
-- **Abhishek Gajanan Bankar**
+We benchmark multiple pretrained vision architectures under different fine-tuning strategies and analyze their performance, calibration, and explainability.
 
+The evaluated models include:
 
-**Supervisor:** Prof. Dr. Nils Strodthoff
-**Supervisor:** Prof. Dr. rer. nat. Juan Lopez Alcaraz
+DINOv2
+CLIP
+Vision Transformer (ViT)
 
-**Carl von Ossietzky University of Oldenburg**
+with three adaptation strategies:
 
----
+Full fine-tuning
+Linear probing
+LoRA-based parameter-efficient fine-tuning
+Dataset
 
-# Repository Structure
+The experiments use multiple retinal datasets to evaluate generalization across different clinical domains.
 
-```text
-Retinal-Disease-XAI/
-│
-├── notebook/
-│   └── retinal_project.ipynb
-│
-├── checkpoints/│
+Training Dataset
+ODIR-5K
+
+The main training dataset consists of retinal fundus images collected from multiple ophthalmic conditions.
+
+Dataset statistics:
+
+Dataset	Images	Purpose
+ODIR-5K	12,784	Model training and internal evaluation
+
+The dataset contains multiple retinal diseases including:
+
+Normal
+Cataract
+Diabetic Retinopathy
+Glaucoma
+AMD
+Other retinal abnormalities
+External Evaluation Dataset
+APTOS 2019 Blindness Detection
+
+APTOS is used for external validation to evaluate model generalization on an unseen dataset.
+
+The original grading labels were converted into binary classification:
+
+Grade 0 → No DR
+Grade 1–4 → DR
+Dataset	Samples	Purpose
+APTOS	677	External testing
+Explainability Validation Dataset
+IDRiD
+
+IDRiD provides expert-annotated lesion segmentation masks, enabling quantitative evaluation of explainability methods.
+
+It is used only for XAI validation.
+
+Annotated lesions include:
+
+Microaneurysms (MA)
+Hemorrhages (HE)
+Hard Exudates (EX)
+Soft Exudates (SE)
+
+A segmentation subset containing 54 images was used for lesion-level evaluation.
+
+Methodology
+
+The complete workflow consists of:
+
+Image preprocessing
+Foundation model feature extraction
+Model adaptation
+Disease classification
+External validation
+Explainability evaluation
+Model Architectures
+
+We evaluate:
+
+Model	Strategy
+DINOv2	Full / Linear / LoRA
+CLIP	Full / Linear / LoRA
+Vision Transformer	Full / Linear / LoRA
+Fine-tuning Strategies
+Full Fine-tuning
+
+All backbone parameters are updated during training.
+
+Advantages:
+
+Maximum adaptation capability
+
+Disadvantage:
+
+High computational cost
+Linear Probing
+
+The pretrained backbone is frozen and only the classifier head is trained.
+
+Advantages:
+
+Faster training
+Fewer parameters
+LoRA Fine-tuning
+
+Low-Rank Adaptation updates a small number of additional parameters while keeping the original backbone frozen.
+
+Advantages:
+
+Parameter efficient
+Maintains pretrained knowledge
+Explainable AI Evaluation
+
+To understand model decision-making, we applied:
+
+Grad-CAM
+
+Grad-CAM generates heatmaps highlighting image regions that contribute most to the prediction.
+
+HiResCAM
+
+HiResCAM provides higher-resolution localization of discriminative regions.
+
+The explanations were compared against expert lesion segmentation masks using:
+
+Dice Score
+Intersection over Union (IoU)
+Pointing Game Accuracy
+Results
+Classification Performance
+
+Models were evaluated using:
+
+AUROC
+Confidence intervals
+Calibration performance
+
+Example comparison:
+
+Model	Internal AUROC	External AUROC
+DINOv2-Full	0.756	0.920
+DINOv2-LoRA	0.758	0.907
+Explainability Results
+
+Visualization examples:
+
+Grad-CAM and HiResCAM
+
+(figure add karo)
+
+These methods highlight clinically relevant retinal regions associated with disease prediction, showing alignment with annotated lesions.
+
+Calibration Analysis
+
+Calibration curves were used to evaluate whether predicted probabilities correspond to actual confidence.
+
+A well-calibrated model should produce:
+
+High confidence for correct predictions
+Lower confidence for uncertain predictions
+Repository Structure
+Explainable-DR-Foundation-Models/
+
+├── notebooks/
+│   └── retinal_foundation_models.ipynb
+
+├── checkpoints/
+
+├── datasets/
+
 ├── results/
-│
-├── assets/
-│
-├── requirements.txt
-├── README.md
-├── LICENSE
-└── .gitignore
-```
 
----
+├── figures/
 
-# Features
+├── paper/
 
-- ✅ Binary Diabetic Retinopathy Classification
-- ✅ Patient-wise Train/Validation/Test Split
-- ✅ Three Vision Foundation Models
-- ✅ Nine Fine-tuning Configurations
-- ✅ External Validation on APTOS
-- ✅ Explainability using Grad-CAM
-- ✅ Explainability using HiResCAM
-- ✅ Quantitative XAI Validation
-- ✅ Calibration using Isotonic Regression
-- ✅ Bootstrap 95% Confidence Intervals
-- ✅ Automatic Checkpoint Loading
+└── presentation/
+Conclusion
 
----
+This study demonstrates that foundation vision models can effectively classify retinal diseases while providing interpretable predictions.
 
-# Models
+Key findings:
 
-| Backbone | Full | Linear | LoRA |
-|----------|:----:|:------:|:----:|
-| DINOv2 | ✅ | ✅ | ✅ |
-| CLIP | ✅ | ✅ | ✅ |
-| Vision Transformer | ✅ | ✅ | ✅ |
+DINOv2 achieved strong generalization on external evaluation.
+LoRA provides competitive performance with fewer trainable parameters.
+XAI methods improve transparency by highlighting clinically meaningful regions.
+Future Work
 
-**Total Models:** **9**
+Future improvements include:
 
----
-
-# Datasets
-
-| Dataset | Purpose | Images |
-|---------|---------|-------:|
-| **ODIR** | Training + Internal Testing | **12,784** |
-| **APTOS 2019** | External Testing | **366** |
-| **IDRiD Segmentation** | XAI Validation | **54** |
-
----
-
-# Training Pipeline
-
-```text
-ODIR Dataset
-      │
-      ▼
-Patient-wise Split
-      │
-      ▼
-Data Augmentation
-      │
-      ▼
-Foundation Model
-      │
-      ▼
-Binary Classification
-      │
-      ▼
-Evaluation
-      │
-      ▼
-Calibration
-      │
-      ▼
-Explainability
-      │
-      ▼
-Grad-CAM / HiResCAM
-      │
-      ▼
-Dice • IoU • Pointing Game
-```
-
----
-
-# Data Augmentation
-
-Training images were augmented using:
-
-- Resize
-- Horizontal Flip
-- Vertical Flip
-- Random Rotation
-- Color Jitter
-
-Validation and test images used deterministic preprocessing only.
-
----
-
-# Evaluation Metrics
-
-- **AUROC**
-- **Bootstrap 95% Confidence Interval**
-- **Internal Evaluation**
-- **External Evaluation**
-- **Calibration AUROC**
-
----
-
-# Explainability
-
-Two explainability techniques were evaluated:
-
-- **Grad-CAM**
-- **HiResCAM**
-
-The generated attention maps were quantitatively validated using expert lesion masks from the **IDRiD Segmentation Dataset**.
-
-Evaluation metrics:
-
-- Dice Score
-- Intersection over Union (IoU)
-- Pointing Game Accuracy
-
----
-
-# Main Results
-
-- **DINOv2 achieved the strongest overall performance.**
-- **LoRA achieved competitive performance with significantly fewer trainable parameters.**
-- **External validation demonstrated good generalization across datasets.**
-- **Grad-CAM and HiResCAM highlighted clinically relevant retinal lesion regions.**
-
----
-
-# Installation
-
-```bash
-git clone https://github.com/your-username/Explainable-DR-Foundation-Models.git
-
-cd Explainable-DR-Foundation-Models
-
-pip install -r requirements.txt
-```
-
----
-
-# Running the Project
-
-Open:
-
-```text
-notebook/retinal_project.ipynb
-```
-
-Run all notebook cells sequentially.
-
-If pretrained checkpoints are available inside the **checkpoints/** directory, they will be loaded automatically.
-
----
-
-# Checkpoints
-
-Filenames:
-
-- ckpt_dinov2_full.pth
-- ckpt_dinov2_linear.pth
-- ckpt_dinov2_lora.pth
-- ckpt_clip_full.pth
-- ckpt_clip_linear.pth
-- ckpt_clip_lora.pth
-- ckpt_vit_full.pth
-- ckpt_vit_linear.pth
-- ckpt_vit_lora.pth
-
----
-
-## Pretrained Checkpoints
-
-Due to GitHub file size limitations, pretrained checkpoints are hosted externally.
-
-Download:
-
-Google Drive:(https://drive.google.com/drive/u/0/folders/17g9pLrwz_A7ZCgStMZGiEhUe_7jCaUsy)
-
-After downloading just run the entire code.
-
----
-
-# Acknowledgements
-
-We sincerely thank **Prof. Dr. Nils Strodthoff**  **Prof. Dr. rer. nat. Juan Lopez Alcaraz** for their continuous guidance, valuable feedback, and regular consultations throughout this project. Their support significantly improved both the implementation and the scientific quality of this work.
-
-We also acknowledge the authors of the **ODIR**, **APTOS 2019**, and **IDRiD** datasets for making these valuable resources publicly available.
-
----
-
-# License
-
-This project is intended for **academic and research purposes**.
+Larger multi-center retinal datasets
+Vision-language foundation models
+Automated lesion-aware training
+Clinical validation with ophthalmologists
+Improved explainability evaluation methods
