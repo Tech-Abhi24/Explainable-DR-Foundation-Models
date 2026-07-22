@@ -366,6 +366,48 @@ to develop more comprehensive decision-support systems.
 
 ---
 
+
+# Model Checkpoints
+
+Due to large file size, trained checkpoints are not included in this repository.
+
+The models can be reproduced by running the training pipeline in the notebook.
+
+The code automatically trains models if checkpoint files are unavailable.
+
+The pretrained checkpoints can be downloaded from the following link:
+
+[Download Model Checkpoints] (https://drive.google.com/drive/folders/16k0PnQQzhyuYyOKibrzkeP5bf6iYAG1K?usp=sharing)
+
+
+---
+
+## Checkpoint Setup
+
+After downloading the checkpoints, create the following folder structure in Google Drive:
+
+MyDrive/
+└── Retinal_project/
+└── checkpoints/
+├── ckpt_dinov2_full.pth
+├── ckpt_dinov2_linear.pth
+├── ckpt_dinov2_lora.pth
+├── ckpt_clip_full.pth
+├── ckpt_clip_linear.pth
+├── ckpt_clip_lora.pth
+├── ckpt_vit_full.pth
+├── ckpt_vit_linear.pth
+└── ckpt_vit_lora.pth
+
+
+The notebook automatically checks whether checkpoint files are available.
+
+- If checkpoints are found, the trained models are loaded directly.
+- If checkpoints are unavailable, the training process starts from scratch.
+
+
+---
+
 # Acknowledgements
 
 
@@ -380,6 +422,9 @@ We would like to thank Prof. Juan Miguel Lopez and Prof. Dr. Nils Strodthoff for
 
 
 This project is intended for research and educational purposes.
+
+
+
 
 
 
