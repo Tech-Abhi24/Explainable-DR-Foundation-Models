@@ -28,14 +28,7 @@ Retinal-Disease-XAI/
 ├── notebook/
 │   └── retinal_project.ipynb
 │
-├── checkpoints/
-│
-├── paper/
-│   └── Final_Paper.pdf
-│
-├── presentation/
-│   └── Final_Presentation.pdf
-│
+├── checkpoints/│
 ├── results/
 │
 ├── assets/
