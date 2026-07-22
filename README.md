@@ -196,21 +196,19 @@ Generated explanations were compared with expert segmentation masks using:
 
 # Model Performance
 
+AUROC comparison of all evaluated models.
 
-AUROC comparison of all evaluated models:
-
-
-| Model | Internal AUROC | External AUROC |
-|---|---:|---:|
-| DINOv2-Full | 0.756 | 0.920 |
-| DINOv2-Linear | 0.703 | 0.843 |
-| DINOv2-LoRA | 0.758 | 0.907 |
-| CLIP-Full | 0.695 | 0.748 |
-| CLIP-Linear | 0.684 | 0.796 |
-| CLIP-LoRA | 0.696 | 0.806 |
-| ViT-Full | - | - |
-| ViT-Linear | - | - |
-| ViT-LoRA | - | - |
+| Model | Internal AUROC (95% CI) | External AUROC (95% CI) |
+|---|---|---|
+| DINOv2-Full | 0.756 (0.731, 0.778) | 0.920 (0.886, 0.952) |
+| DINOv2-Linear | 0.703 (0.679, 0.727) | 0.843 (0.801, 0.884) |
+| DINOv2-LoRA | 0.758 (0.733, 0.782) | 0.907 (0.869, 0.940) |
+| CLIP-Full | 0.701 (0.676, 0.726) | 0.756 (0.697, 0.809) |
+| CLIP-Linear | 0.686 (0.662, 0.709) | 0.805 (0.758, 0.848) |
+| CLIP-LoRA | 0.701 (0.676, 0.726) | 0.811 (0.764, 0.856) |
+| ViT-Full | 0.740 (0.713, 0.763) | 0.920 (0.890, 0.947) |
+| ViT-Linear | 0.692 (0.666, 0.718) | 0.791 (0.741, 0.835) |
+| ViT-LoRA | 0.716 (0.690, 0.739) | 0.732 (0.681, 0.778) |
 
 
 ---
@@ -223,7 +221,7 @@ ROC curves show the ability of each model to distinguish between diseased and no
 Higher AUROC indicates better classification performance.
 
 
-![ROC Curves](plots_complete/roc_all9models.png)
+![ROC Curves](results/plots_complete/roc_all9models.png)
 
 
 
@@ -237,7 +235,7 @@ Calibration curves evaluate whether predicted probabilities represent the true c
 A well-calibrated model should provide reliable confidence estimates.
 
 
-![Calibration Curves](plots_complete/reliability_diagram.png)
+![Calibration Curves](results/plots_complete/reliability_diagram.png)
 
 
 
@@ -254,7 +252,7 @@ These methods generate heatmaps showing which retinal regions influenced the pre
 The generated explanations were compared with expert lesion segmentation masks from IDRiD.
 
 
-![Grad-CAM and HiResCAM Lesion Segmentation](plots_complete/xai_final_grid_lesiononly.png)
+![Grad-CAM and HiResCAM Lesion Segmentation](results/plots_complete/xai_final_grid_lesiononly.png)
 
 
 
