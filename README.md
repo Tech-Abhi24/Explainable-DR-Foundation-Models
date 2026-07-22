@@ -280,6 +280,17 @@ results/xai_metrics_lesiononly.csv
 
 ---
 
+
+# Key Findings
+
+- DINOv2 and ViT foundation models achieved the strongest generalization performance.
+- DINOv2-LoRA achieved the highest internal AUROC while requiring fewer trainable parameters.
+- External validation on APTOS demonstrated strong transferability across datasets.
+- Grad-CAM and HiResCAM showed that models focused on clinically relevant retinal regions.
+
+
+---
+
 # Limitations
 
 
@@ -355,38 +366,10 @@ to develop more comprehensive decision-support systems.
 
 ---
 
-# Repository Structure
-
-Explainable-DR-Foundation-Models/
-
-├── README.md
-├── LICENSE
-│
-├── checkpoints/
-│
-├── plots_complete/
-│ ├── reliability_diagram.png
-│ ├── roc_all9models.png
-│ └── xai_final_grid_lesiononly.png
-│
-├── results/
-│ ├── final_results_9models.json
-│ ├── xai_metrics_final.csv
-│ └── xai_metrics_lesiononly.csv
-│
-└── src/
-
-
-
-
----
-
 # Acknowledgements
 
 
-We would like to thank **Prof. Juan Miguel Lopez** for his continuous guidance and valuable feedback throughout this project.
-
-His regular consultations helped improve the methodology, evaluation framework, and overall quality of this work.
+We would like to thank Prof. Juan Miguel Lopez and Prof. Dr. Nils Strodthoff for their valuable suggestions, constructive feedback, and guidance during regular consultations, which significantly contributed to improving the methodology, evaluation framework, and overall quality of this work.
 
 
 ---
